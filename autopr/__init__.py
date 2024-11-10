@@ -222,7 +222,7 @@ def run(pull_repos: bool, push_delay: Optional[float]):
         except CliException as e:
             error(f"Error: {e}")
 
-    click.secho(f"Done!", bold=True)
+    click.secho("Done!", bold=True)
 
 
 @cli.group()
