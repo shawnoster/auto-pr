@@ -161,19 +161,16 @@ def _apply_filters(
 
 
 def _filter_matches(filter: config.Filter, filter_info: FilterInfo):
-    if filter.public is not None:
-        if filter_info.public != filter.public:
-            return False
+    if filter.public is not None and filter_info.public != filter.public:
+        return False
 
-    if filter.archived is not None:
-        if filter_info.archived != filter.archived:
-            return False
+    if filter.archived is not None and filter_info.archived != filter.archived:
+        return False
 
-    if filter.match_name is not None:
-        if all(
-            not re.fullmatch(pattern, filter_info.name) for pattern in filter.match_name
-        ):
-            return False
+    if filter.match_name is not None and all(
+        not re.fullmatch(pattern, filter_info.name) for pattern in filter.match_name
+    ):
+        return False
 
     if filter.match_owner is not None:
         if not re.fullmatch(filter.match_owner, filter_info.owner):

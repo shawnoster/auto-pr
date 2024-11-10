@@ -264,7 +264,7 @@ def reset_and_run_script(
     pull_repo: bool,
 ):
     if db.user is None:
-        raise Exception(
+        raise ValueError(
             "db.user is None - please report at github.com/getyourguide/auto-pr"
         )
 
